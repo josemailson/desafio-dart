@@ -155,12 +155,15 @@ void main() {
 
   String buscarEmpresa(String documento) {
     String retorno = '';
+    int localizou = 0;
     for (var i = 0; i < clientes.length; i++) {
       if (clientes[i].comparaCNPJ(documento)) {
         retorno = retornarCliente(clientes[i]);
-      } else {
-        retorno = 'CNPJ não localizado em cadastro!';
+        localizou++;
       }
+    }
+    if (localizou == 0) {
+      retorno = 'Empresa não localizada!';
     }
     return retorno;
   }
@@ -169,12 +172,15 @@ void main() {
 
   String buscarEmpresaPeloSocio(String documento) {
     String retorno = '';
+    int localizou = 0;
     for (var i = 0; i < clientes.length; i++) {
       if (clientes[i].socio.comparaCPF(documento)) {
         retorno = retornarCliente(clientes[i]);
-      } else {
-        retorno = 'CPF não localizado em cadastro!';
+        localizou++;
       }
+    }
+    if (localizou == 0) {
+      retorno == 'CPF não localizado!';
     }
     return retorno;
   }
@@ -203,12 +209,17 @@ void main() {
   //A função excluirEmpresa primeiro procura a id dentro da lista de clientes e depois utiliza-se o método removeAt para retirar esse cliente da lista.
 
   void excluirEmpresa(String id) {
+    int localiza = 0;
     for (var i = 0; i < clientes.length; i++) {
       if (clientes[i].id == id) {
         print('Excluindo empresa ${clientes[i].razaoSocial}');
         clientes.removeAt(i);
         print('Empresa excluída');
+        localiza++;
       }
+    }
+    if (localiza == 0) {
+      print('ID não localizada!');
     }
   }
 

@@ -208,8 +208,6 @@ void main() {
         print('Excluindo empresa ${clientes[i].razaoSocial}');
         clientes.removeAt(i);
         print('Empresa excluída');
-      } else {
-        print('Empresa não localizada!');
       }
     }
   }

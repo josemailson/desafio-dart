@@ -34,30 +34,49 @@ void main() {
   }
 
   void listarClientesAlfabetica(List clientes) {
-    for (var i = 0; i < clientes.length - 1; i++) {
-      for (var j = 0; j < clientes.length; j++) {
-        if (clientes[i].razaoSocial.compareTo(clientes[j].razaoSocial) > 0) {
-          Cliente temp = clientes[i];
-          clientes[i] = clientes[j];
-          clientes[j] = temp;
+    if (clientes.isNotEmpty) {
+      for (var i = 0; i < clientes.length - 1; i++) {
+        for (var j = 0; j < clientes.length; j++) {
+          if (clientes[i].razaoSocial.compareTo(clientes[j].razaoSocial) > 0) {
+            Cliente temp = clientes[i];
+            clientes[i] = clientes[j];
+            clientes[j] = temp;
+          }
         }
       }
+      for (var i = 0; i < clientes.length; i++) {
+        print(retornarCliente(clientes[i]));
+      }
+    } else {
+      print('Lista de Clientes Vazia!');
     }
+  }
+
+  void excluirEmpresa(String id) {
     for (var i = 0; i < clientes.length; i++) {
-      print(retornarCliente(clientes[i]));
+      if (clientes[i].id == id) {
+        print('Excluindo empresa ${clientes[i].razaoSocial}');
+        clientes.removeAt(i);
+        print('Empresa excluída');
+      } else {
+        print('Empresa não localizada!');
+      }
     }
   }
 
   int opcao = 0;
   do {
+    print('---------------------------------------------------------');
     print('CADASTRO DE EMPRESAS');
+    print('---------------------------------------------------------');
     print('Excolha uma opção:');
-    print('1 - CADASTRAR EMPRESA POR CNPJ');
+    print('1 - CADASTRAR EMPRESA');
     print('2 - BUSCAR EMPRESAS POR CNPJ');
-    print('3 - BUSCAR EMPRESA POR CPF/CNPJ DO SÓCIO');
-    print('4 - LISTAR EMPRESA EM ORDEM ALFABÉTICA (RAZÃO SOCIAL)');
+    print('3 - BUSCAR EMPRESA POR CPF DO SÓCIO');
+    print('4 - LISTAR EMPRESA EM ORDEM ALFABÉTICA DA RAZÃO SOCIAL');
     print('5 - EXCLUIR EMPRESA (POR ID)');
     print('6 - SAIR');
+    print('---------------------------------------------------------');
     opcao = int.parse(stdin.readLineSync()!);
     switch (opcao) {
       case 1:
@@ -65,6 +84,8 @@ void main() {
         clientes.add(cliente);
         break;
       case 2:
+        print('---------------------------------------------------------');
+        print('\n');
         print('Digite o CNPJ para buscar:');
         String documento = stdin.readLineSync()!;
         print(buscarCliente(documento));
@@ -74,13 +95,23 @@ void main() {
         print(clientes);
         break;
       case 4:
+        print('---------------------------------------------------------');
+        print('\n');
         listarClientesAlfabetica(clientes);
         break;
       case 5:
-        print('excluindo empresa');
+        print('---------------------------------------------------------');
+        print('\n');
+        print('Qual id da empresa que deseja excluir?');
+        String id = stdin.readLineSync()!;
+        excluirEmpresa(id);
         break;
       case 6:
-        print('saindo');
+        print('---------------------------------------------------------');
+        print('\n');
+        print('SAINDO');
+        print('\n');
+        print('---------------------------------------------------------');
         break;
       default:
         print('opção inválida!');
@@ -91,7 +122,8 @@ void main() {
 Cliente criarCliente() {
   var uuid = Uuid();
   String id = uuid.v1();
-
+  print('---------------------------------------------------------');
+  print('\n');
   print('Digite o CNPJ:');
 
   var cnpj = stdin.readLineSync()!;
@@ -192,10 +224,13 @@ Cliente criarCliente() {
       razaoSocial: razaoSocial,
       endereco: endereco,
       socio: socio);
-
+  print('---------------------------------------------------------');
+  print('\n');
   print('Cadastro de cliente $nomeFantasia criado!');
   print('Razão Social: $razaoSocial');
   print('CNPJ: $cnpj');
   print('id: $id');
+  print('\n');
+  print('---------------------------------------------------------');
   return cliente;
 }

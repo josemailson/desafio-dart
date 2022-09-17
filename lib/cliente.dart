@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:desafio_final/endereco.dart';
 import 'package:desafio_final/socio.dart';
 

@@ -14,4 +14,12 @@ class Socio {
       return "Documento inválido";
     }
   }
+
+  bool comparaCPF(String documento) {
+    if (documento == _documento) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

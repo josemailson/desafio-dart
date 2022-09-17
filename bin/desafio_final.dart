@@ -21,13 +21,25 @@ void main() {
     return cadastro;
   }
 
-  String buscarCliente(String documento) {
+  String buscarEmpresa(String documento) {
     String retorno = '';
     for (var i = 0; i < clientes.length; i++) {
       if (clientes[i].comparaCNPJ(documento)) {
         retorno = retornarCliente(clientes[i]);
       } else {
         retorno = 'CNPJ não localizado em cadastro!';
+      }
+    }
+    return retorno;
+  }
+
+  String buscarEmpresaPeloSocio(String documento) {
+    String retorno = '';
+    for (var i = 0; i < clientes.length; i++) {
+      if (clientes[i].socio.comparaCPF(documento)) {
+        retorno = retornarCliente(clientes[i]);
+      } else {
+        retorno = 'CPF não localizado em cadastro!';
       }
     }
     return retorno;
@@ -69,11 +81,12 @@ void main() {
     print('---------------------------------------------------------');
     print('CADASTRO DE EMPRESAS');
     print('---------------------------------------------------------');
-    print('Excolha uma opção:');
+    print('Escolha uma opção:');
+    print('\n');
     print('1 - CADASTRAR EMPRESA');
-    print('2 - BUSCAR EMPRESAS POR CNPJ');
+    print('2 - BUSCAR EMPRESA POR CNPJ');
     print('3 - BUSCAR EMPRESA POR CPF DO SÓCIO');
-    print('4 - LISTAR EMPRESA EM ORDEM ALFABÉTICA DA RAZÃO SOCIAL');
+    print('4 - LISTAR EMPRESA EM ORDEM ALFABÉTICA');
     print('5 - EXCLUIR EMPRESA (POR ID)');
     print('6 - SAIR');
     print('---------------------------------------------------------');
@@ -85,32 +98,29 @@ void main() {
         break;
       case 2:
         print('---------------------------------------------------------');
-        print('\n');
         print('Digite o CNPJ para buscar:');
         String documento = stdin.readLineSync()!;
-        print(buscarCliente(documento));
+        print(buscarEmpresa(documento));
         break;
       case 3:
-        print('buscando empresa pelo sócio');
-        print(clientes);
+        print('---------------------------------------------------------');
+        print('Qual o CPF do sócio que deseja pesquisar?');
+        String documento = stdin.readLineSync()!;
+        print(buscarEmpresaPeloSocio(documento));
         break;
       case 4:
         print('---------------------------------------------------------');
-        print('\n');
         listarClientesAlfabetica(clientes);
         break;
       case 5:
         print('---------------------------------------------------------');
-        print('\n');
         print('Qual id da empresa que deseja excluir?');
         String id = stdin.readLineSync()!;
         excluirEmpresa(id);
         break;
       case 6:
         print('---------------------------------------------------------');
-        print('\n');
         print('SAINDO');
-        print('\n');
         print('---------------------------------------------------------');
         break;
       default:
@@ -123,7 +133,6 @@ Cliente criarCliente() {
   var uuid = Uuid();
   String id = uuid.v1();
   print('---------------------------------------------------------');
-  print('\n');
   print('Digite o CNPJ:');
 
   var cnpj = stdin.readLineSync()!;
@@ -225,12 +234,10 @@ Cliente criarCliente() {
       endereco: endereco,
       socio: socio);
   print('---------------------------------------------------------');
-  print('\n');
   print('Cadastro de cliente $nomeFantasia criado!');
   print('Razão Social: $razaoSocial');
   print('CNPJ: $cnpj');
   print('id: $id');
-  print('\n');
   print('---------------------------------------------------------');
   return cliente;
 }

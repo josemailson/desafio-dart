@@ -58,5 +58,31 @@ Notas:
 
 ## Demo
 
-Insert gif or link to demo
+Tela inicial do programa
 
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/menu.png?raw=true) 
+
+1. Cadastrar Empresa
+
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/cadastrar1.png?raw=true)
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/cadastrar2.png?raw=true)
+ 
+2. Buscar empresa por CNPJ
+
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/buscarempresa.png?raw=true)
+
+3. Buscar Empresa por CPF do Sócio
+
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/buscarcpf.png?raw=true)
+
+4. Listar Empresas em ordem alfabética
+
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/listaralfabetica.png?raw=true)
+
+5. Excluir Empresa por id
+
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/excluir.png?raw=true)
+
+6. Sair
+
+![img](https://github.com/josemailson/desafio-dart/blob/main/demo_img/sair.png?raw=true)

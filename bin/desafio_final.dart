@@ -235,7 +235,7 @@ void main() {
     print('1 - CADASTRAR EMPRESA');
     print('2 - BUSCAR EMPRESA POR CNPJ');
     print('3 - BUSCAR EMPRESA POR CPF DO SÓCIO');
-    print('4 - LISTAR EMPRESA EM ORDEM ALFABÉTICA');
+    print('4 - LISTAR EMPRESAS EM ORDEM ALFABÉTICA');
     print('5 - EXCLUIR EMPRESA (POR ID)');
     print('6 - SAIR');
     print('---------------------------------------------------------');

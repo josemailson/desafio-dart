@@ -7,7 +7,7 @@ class Endereco {
   final String bairro;
   final String cidade;
   final String estado;
-  final _cep;
+  final String _cep;
 
   //CONSTRUTOR
   Endereco(this._cep,

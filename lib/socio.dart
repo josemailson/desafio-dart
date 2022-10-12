@@ -1,7 +1,5 @@
 import 'package:desafio_final/endereco.dart';
 
-//Criação da classe Socio
-
 class Socio {
   //ATRIBUTOS
   final String nome;

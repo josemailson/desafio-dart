@@ -1,16 +1,14 @@
 import 'package:desafio_final/endereco.dart';
 import 'package:desafio_final/socio.dart';
 
-//Criação da classe Cliente
-
 class Cliente {
   //ATRIBUTOS
-  final id;
-  final _cnpj;
-  final dataCriacao;
+  final String id;
+  final String _cnpj;
+  final DateTime dataCriacao;
   final String razaoSocial;
   final String? nomeFantasia;
-  final _telefone;
+  final String _telefone;
   final Endereco endereco;
   final Socio socio;
 

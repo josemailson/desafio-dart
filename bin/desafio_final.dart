@@ -4,8 +4,6 @@ import 'package:desafio_final/endereco.dart';
 import 'package:desafio_final/socio.dart';
 import 'package:uuid/uuid.dart';
 
-List clientes = <Cliente>[];
-
 void main() {
   int opcao = 0;
   do {
@@ -59,6 +57,8 @@ void main() {
     }
   } while (opcao != 6);
 }
+
+var clientes = <Cliente>[];
 
 Cliente criarCliente() {
   var uuid = Uuid();
@@ -222,7 +222,7 @@ String buscarEmpresaPeloSocio(String cpf) {
   return retorno;
 }
 
-void listarClientesAlfabetica(List clientes) {
+void listarClientesAlfabetica(List<Cliente> clientes) {
   if (clientes.isNotEmpty) {
     for (var i = 0; i < clientes.length - 1; i++) {
       for (var j = 0; j < clientes.length; j++) {

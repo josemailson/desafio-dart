@@ -62,7 +62,7 @@ void main() {
 
 Cliente criarCliente() {
   var uuid = Uuid();
-  String id = uuid.v1(); //cria uma id única para esse cliente
+  String id = uuid.v1();
   print('---------------------------------------------------------');
   print('Digite o CNPJ:');
 
@@ -74,7 +74,7 @@ Cliente criarCliente() {
     cnpj = aux;
   }
 
-  final dataCriacao = DateTime.now(); //registra a data de criação do cadastro
+  final dataCriacao = DateTime.now();
 
   print('Digite a razão social:');
 
@@ -87,7 +87,6 @@ Cliente criarCliente() {
   print('Digite telefone:');
 
   var telefone = stdin.readLineSync()!;
-  //validação do tamanho da string para telefone
   while (telefone.length != 11) {
     print('Telefone inválido. Digite telefone:');
     var aux = stdin.readLineSync()!;
@@ -107,7 +106,7 @@ Cliente criarCliente() {
   String estado = stdin.readLineSync()!;
   print('CEP:');
   String cepAux = stdin.readLineSync()!;
-  //validação do tamanho da string para cep
+
   while (cepAux.length != 8) {
     print('CEP inválido. Digite CEP:');
     var aux = stdin.readLineSync()!;
@@ -115,7 +114,6 @@ Cliente criarCliente() {
   }
   String cep = cepAux;
 
-  //criando um ojeto do tipo Endereco para o Cliente
   Endereco endereco = Endereco(cep,
       logradouro: logradouro,
       numero: numero,
@@ -155,7 +153,6 @@ Cliente criarCliente() {
     cep2 = aux;
   }
 
-  //criando um ojeto do tipo Endereco para o Socio
   Endereco enderecoSocio = Endereco(cep2,
       logradouro: logradouro2,
       numero: numero2,
@@ -163,10 +160,8 @@ Cliente criarCliente() {
       cidade: cidade2,
       estado: estado2);
 
-  //criando um ojeto do tipo Socio
   Socio socio = Socio(documento, nome: nome, endereco: enderecoSocio);
 
-  //criando um ojeto do tipo Cliente
   Cliente cliente = Cliente(cnpj, telefone, nomeFantasia,
       id: id,
       dataCriacao: dataCriacao,
@@ -174,7 +169,6 @@ Cliente criarCliente() {
       endereco: endereco,
       socio: socio);
 
-  //mostrando as informações de Cliente criado para o usuário
   print('---------------------------------------------------------');
   print('Cadastro de cliente $nomeFantasia criado!');
   print('Razão Social: $razaoSocial');
@@ -228,8 +222,6 @@ String buscarEmpresaPeloSocio(String cpf) {
   return retorno;
 }
 
-//A função listarClientesAlfabetica primeiro verifica se a lista não está vazia, caso esteja retorna essa informação. Após essa checagem é feito um algoritmo para comparar as razões sociais de cada um dos clientes criados entre si e reorganizá-los de forma alfabética e mostrá-los dessa forma na tela.
-
 void listarClientesAlfabetica(List clientes) {
   if (clientes.isNotEmpty) {
     for (var i = 0; i < clientes.length - 1; i++) {
@@ -248,8 +240,6 @@ void listarClientesAlfabetica(List clientes) {
     print('Lista de Clientes Vazia!');
   }
 }
-
-//A função excluirEmpresa primeiro procura a id dentro da lista de clientes e depois utiliza-se o método removeAt para retirar esse cliente da lista.
 
 void excluirEmpresa(String id) {
   int localiza = 0;

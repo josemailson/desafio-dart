@@ -4,9 +4,9 @@ import 'package:desafio_final/endereco.dart';
 
 class Socio {
   //ATRIBUTOS
-  String nome;
+  final String nome;
   final String _documento;
-  Endereco endereco;
+  final Endereco endereco;
 
   //CONSTRUTOR
   Socio(this._documento, {required this.nome, required this.endereco});

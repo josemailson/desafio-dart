@@ -8,11 +8,11 @@ class Cliente {
   final id;
   final _cnpj;
   final dataCriacao;
-  String razaoSocial;
-  String? nomeFantasia;
+  final String razaoSocial;
+  final String? nomeFantasia;
   final _telefone;
-  Endereco endereco;
-  Socio socio;
+  final Endereco endereco;
+  final Socio socio;
 
   //CONSTRUTOR
   Cliente(this._cnpj, this._telefone, this.nomeFantasia,

@@ -2,11 +2,11 @@
 
 class Endereco {
   //ATRIBUTOS
-  String logradouro;
-  int? numero;
-  String bairro;
-  String cidade;
-  String estado;
+  final String logradouro;
+  final int? numero;
+  final String bairro;
+  final String cidade;
+  final String estado;
   final _cep;
 
   //CONSTRUTOR

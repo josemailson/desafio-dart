@@ -194,15 +194,27 @@ String retornarCliente(Cliente cliente) {
 
 String buscarEmpresa(String cnpj) {
   String retorno = '';
-  var cliente = clientes.firstWhere((element) => element.comparaCNPJ(cnpj));
-  retorno = retornarCliente(cliente);
+  final cliente = clientes
+      .cast<Cliente?>()
+      .firstWhere((element) => element!.comparaCNPJ(cnpj), orElse: () => null);
+  if (cliente == null) {
+    retorno = 'Empresa não localizada!';
+  } else {
+    retorno = retornarCliente(cliente);
+  }
   return retorno;
 }
 
 String buscarEmpresaPeloSocio(String cpf) {
   String retorno = '';
-  var cliente = clientes.firstWhere((element) => element.socio.comparaCPF(cpf));
-  retorno = retornarCliente(cliente);
+  final cliente = clientes.cast<Cliente?>().firstWhere(
+      (element) => element!.socio.comparaCPF(cpf),
+      orElse: () => null);
+  if (cliente == null) {
+    retorno = 'Empresa não localizada!';
+  } else {
+    retorno = retornarCliente(cliente);
+  }
   return retorno;
 }
 
@@ -226,8 +238,14 @@ void listarClientesAlfabetica(List<Cliente> clientes) {
 }
 
 void excluirEmpresa(String id) {
-  var cliente = clientes.firstWhere((element) => element.id == id);
-  print('Excluindo empresa ${cliente.razaoSocial}');
-  clientes.removeWhere((element) => element.id == id);
-  print('Empresa excluída');
+  final cliente = clientes
+      .cast<Cliente?>()
+      .firstWhere((element) => (element!.id == id), orElse: () => null);
+  if (cliente == null) {
+    print('Empresa não localizada!');
+  } else {
+    print('Excluindo empresa ${cliente.razaoSocial}');
+    clientes.removeWhere((element) => element.id == id);
+    print('Empresa excluída');
+  }
 }
